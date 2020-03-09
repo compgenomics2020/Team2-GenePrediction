@@ -1,4 +1,4 @@
-# !/usr/bin/env/ python3
+# !/usr/bin/env/python3
 import argparse
 import os
 import subprocess
@@ -17,8 +17,8 @@ class SmartFormatter(argparse.HelpFormatter):
 #############################################################################################################################################################################################
 #check whether input files folder is present and not empty or not
 def check_input(folder_name):
-    if os.folder_name.isdir:
-        if len(os.listdir(folder))!=0:
+    if os.path.isdir(folder_name):
+        if len(os.listdir(folder_name))!=0:
             return True
         else:
             print("The folder {} is empty".format(folder_name))
@@ -44,13 +44,13 @@ def check_tools(run_tool):
             return False
         return True
 # Running GeneMarkS-2 and/or Prodigal based on the options given by the user, it takes in the input path to the files, output path, type of the species( either bacteria or auto for genemarks-2) and which tool to run or both to run
-def running_tools(input_path,output_path,type_species,run_tool,flag,name=None):
+def running_tools(input_path,output_path,type_species,run_tool,flag,name="contigs.fasta"):
         #List all the directories present in the input path, where the wrapper goes into those directories and runs the contigs files
     for file in os.listdir(input_path):
         if (run_tool==1 or run_tool==3):
-            genemarks2_output=genemarks2_script(input_path,file,output_path,type_species,flag,name)
+            genemarks2_output=genemarks2_script(input_path,file,output_path,type_species,name)
         if(run_tool==2 or run_tool==3):
-            prodigal_output=prodigal_script(input_path,file,output_path,flag,name)
+            prodigal_output=prodigal_script(input_path,file,output_path,name)
 ############################################################################################################################################################################################
 ######## main of the script which takes in the input ###################################### 
 def main():
@@ -59,9 +59,9 @@ def main():
     "1 Take input from the genome assembly results \n"
     "2 Input your own assembly files")
     parser.add_argument("-nc", "--name-contigs", default="contigs.fasta" ,help="Name of the contig files,called when option 2 for input-option is selected, default considered is contigs.fasta",required=False)
-    parser.add_argument("-if", "--input-assembly", help="Path to the directory that contains input file manually,called when option 2 for input-option is selected",required=False)
-    parser.add_argument("-if", "--input-files77", help="Path to the directory that contains input file for spades output of 21,33,55,77, called when default option for input-option is selected",required=False)
-    parser.add_argument("-if", "--input-files99", help="Path to the directory that contains input file for spades output of 21,33,55,77,99,127,called when default option for input-option is selected",required=False)
+    parser.add_argument("-ia", "--input-assembly", help="Path to the directory that contains input file manually,called when option 2 for input-option is selected",required=False)
+    parser.add_argument("-if77", "--input-files77", help="Path to the directory that contains input file for spades output of 21,33,55,77, called when default option for input-option is selected",required=False)
+    parser.add_argument("-if99", "--input-files99", help="Path to the directory that contains input file for spades output of 21,33,55,77,99,127,called when default option for input-option is selected",required=False)
     parser.add_argument("-go", "--gene-output", help="Path to a directory that will store the output gff files, fna files and faa files.", required=True)
     parser.add_argument("-tr","--tools-to-run",default=3,help="R|Default Option is 3, options available\n"
     "1 Only GeneMarkS-2 \n"
@@ -111,4 +111,5 @@ def main():
                     return False        
         else:
             return False
-    
+if __name__=="__main__":
+    main()
