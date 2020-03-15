@@ -53,6 +53,7 @@ def check_tools(run_tool):
         return True
 #################################################################################################################################################################################################
 
+
 # Blast validation function
 def blast_results(run_tool,out):
     #Checks if gene_marks2 is called or prodigal or the union of both
@@ -62,21 +63,29 @@ def blast_results(run_tool,out):
         #Lists all the files in the genemarks2 output directory
         for folder_file in os.listdir(genemarks2_output):
             #Runs the blast script
-            blastn_script(genemarks2_output, folder_file, out,run_tool)
+            blast_out_genemarks2=blastn_script(genemarks2_output, folder_file, out,run_tool)
+            if blast_out_genemarks2 == False:
+                return False
     #Same if only prodigal is called
     elif run_tool==2:
         prodigal_output=out+"/prodigal/"
         for folder_file in os.listdir(prodigal_output):
-            blastn_script(prodigal_output,folder_file, out,run_tool)
+            blast_out_prodigal=blastn_script(prodigal_output,folder_file, out,run_tool)
+            if blast_out_prodigal == False:
+                return False
     #Same if both the tools are called and the merge results are obtained
     else:
         union_input_path=merge_output=out+"/merge_out/union_fna/"
         for folder_file in os.listdir(union_input_path):
-            blastn_script(union_input_path ,folder_file, out,run_tool)
-#################################################################################################################################################################################################
+            blast_out=blastn_script(union_input_path ,folder_file, out,run_tool)
+            if blast_out= False:
+                return False
+    return True
+
+################################################################################################################################################################################################
 
 # Running GeneMarkS-2 and/or Prodigal based on the options given by the user, it takes in the input path to the files, output path, type of the species( either bacteria or auto for genemarks-2) and which tool to run or both to run
-def running_tools(input_path,output_path,type_species,run_tool,flag,name="contigs.fa"):
+def running_tools(input_path,output_path,type_species,run_tool,flag,name="contigs.fasta"):
         #List all the directories present in the input path, where the wrapper goes into those directories and runs the contigs files
     for folder in os.listdir(input_path):
         if (run_tool==1 or run_tool==3):
