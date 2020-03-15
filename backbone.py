@@ -53,7 +53,6 @@ def check_tools(run_tool):
         return True
 #################################################################################################################################################################################################
 
-
 # Blast validation function
 def blast_results(run_tool,out):
     #Checks if gene_marks2 is called or prodigal or the union of both
@@ -81,8 +80,7 @@ def blast_results(run_tool,out):
             if blast_out= False:
                 return False
     return True
-
-################################################################################################################################################################################################
+#################################################################################################################################################################################################
 
 # Running GeneMarkS-2 and/or Prodigal based on the options given by the user, it takes in the input path to the files, output path, type of the species( either bacteria or auto for genemarks-2) and which tool to run or both to run
 def running_tools(input_path,output_path,type_species,run_tool,flag,name="contigs.fasta"):
@@ -163,7 +161,9 @@ def main():
                 #If merge is false, it just returns false and the function returns the appropriate error message
                 if not merge:
                     return False
-            blast_results(run_tool,output_path)
+            blast_output=blast_results(run_tool,output_path)
+            if not blast_output:
+                return False
         else:
             return False
     ##################################################################################################################################################
@@ -198,7 +198,9 @@ def main():
                 #If merge is false, it just returns false and the function returns the appropriate error message
                 if not merge:
                     return False
-            blast_results(run_tool,output_path)        
+            blast_output=blast_results(run_tool,output_path)
+            if not blast_output:
+                return False   
         else:
             return False
 ################################################################################################################################################################################################################
