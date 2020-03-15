@@ -23,7 +23,7 @@ class SmartFormatter(argparse.HelpFormatter):
 #check whether input files folder is present and not empty or not
 def check_input(folder_name):
     if os.path.isdir(folder_name):
-        if len(os.listdir(folder))!=0:
+        if len(os.listdir(folder_name))!=0:
             return True
         else:
             print("The folder {} is empty".format(folder_name))
