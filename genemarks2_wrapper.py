@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import os,subprocess
 
-def genemarks2_script(input_path,output_folder_path,type_species,name,flag):
+def genemarks2_script(input_path,assembly_input,output_folder_path,type_species,name,flag):
     #Get the contigs file from all the different assemblies generated
     #input= input_path is the folder in which different contigs are kept example:21,33,55,77 and assembly_file is the actual folder i.e CGT2049. name just takes those contigs files 
     assembly_input=input_path+"/"+assembly_file+"/"+name
