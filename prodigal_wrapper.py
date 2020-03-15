@@ -4,7 +4,7 @@ import os,subprocess
 def prodigal_script(input_path,assembly_file,output_folder_path,name):
     #Get the contigs file from all the different assemblies generated
     #input= input_path is the folder in which different contigs are kept example:21,33,55,77 and assembly_file is the actual folder i.e CGT2049. name just takes those contigs files 
-    assembly_input=input_path+assembly_file+"/"+name
+    assembly_input=input_path+assembly_file+"/contigs.fasta"
     #output_tool is the folder it will create in the output_folder_path based on the tool which is running
     output_tool=output_folder_path+"prodigal/"
     #output_folder_path is the folder in which the output folders will be generated in. It will check whether those folders are present or will generate them. 
