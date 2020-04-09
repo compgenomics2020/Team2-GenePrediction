@@ -24,7 +24,7 @@ def infernal_script(input_path,assembly_file,output_folder_path,name):
         print("Running Infernal for:" ,assembly_file)
         #Running Infernal  
         bash_output=subprocess.check_output(["cmscan", "-E", "1e-06", "--rfam", "--tblout", "result.tblout", "--noali", "--fmt 2", "--clanin", "Rfam12.2.claninfo", "Rfam.cm", assembly_input])
-        bash_output=subprocess.check_output(["infernal2gff.pl", "--cmscan", "--fmt2", "result.tblout", "--all >", output_gff])
+        bash_output=subprocess.check_output(["perl","./convert_codes/infernal2gff.pl", "--cmscan", "--fmt2", "result.tblout", "--all >", output_gff])
     except subprocess.CalledProcessError:
         print("Error running Infernal please check the installation and files ")
         return False

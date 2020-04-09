@@ -25,7 +25,7 @@ def rnammer_script(input_path,assembly_file,output_folder_path,name):
         print("Running RNAmmer for:" ,assembly_file)
             #RNAmmer running with genome-type bacteria
         bash_output=subprocess.check_output(["rnammer", "-S", "bac", "-m", "lsu,ssu,tsu", "-multi", "-gff", "rRNA.gff ", assembly_input])
-        bash_output=subprocess.check_output(["convert_RNAmmer_to_gff3.pl", "--input", "rRNA.gff >", output_gff])
+        bash_output=subprocess.check_output(["perl","./convert_codes/convert_RNAmmer_to_gff3.pl", "--input", "rRNA.gff >", output_gff])
 
 
     except subprocess.CalledProcessError:
