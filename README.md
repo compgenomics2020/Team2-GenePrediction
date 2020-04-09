@@ -2,7 +2,7 @@
 **Paarth Parekh, Danielle Temples, Kara Keun, Shuting Lin**
 
 ## Required Software
-**Conda is recommended way of installing tools**
+**Conda is recommended way of installing tools** <br/>
 **Python and Perl is needed to run this pipeline**
 1. GeneMarkS-2 (Locally in the path)
 2. Prodigal
