@@ -1,8 +1,8 @@
 # This is Gene Prediction (Team 2, Group 2)
-## Paarth Parekh, Danielle Temples, Kara Keun, Shuting Lin
+**Paarth Parekh, Danielle Temples, Kara Keun, Shuting Lin**
 
 ## Required Software
-Conda is recommended way of installing tools
+**Conda is recommended way of installing tools**
 
 1. GeneMarkS-2 (Locally in the path)
 2. Prodigal
@@ -34,5 +34,6 @@ Please Run the backbone script. It takes in the following inputs:
                         	2 Aragon, Infernal and Rnammer (and merge results
 
 ## Description:
-This Gene Prediction Pipeline runs GeneMarkS-2 and/or Prodigal to predict the coding genes in the assembled fasta files and blasts it against the reference database to validate the results and gives output as Known gene or Unknown Gene. If both GeneMarkS-2 and Prodigal are called then it merges the results and then blasts the results to give renamed .fna, .faa and .gff files.
+This Gene Prediction Pipeline runs GeneMarkS-2 and/or Prodigal to predict the coding genes in the assembled fasta files and blasts it against the reference database to validate the results and gives output as Known gene or Unknown Gene. If both GeneMarkS-2 and Prodigal are called then it merges the results and then blasts the results to give renamed .fna, .faa and .gff files. 
+
 For Noncoding Prediction it uses Infernal and/or Infernal,Aragon and Rnammer to predict the ncRNA. If all three tools are called it merges the results and gives the merged gff files.
