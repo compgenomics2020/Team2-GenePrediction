@@ -1,5 +1,5 @@
 # This is Gene Prediction (Team 2, Group 2)
-**Paarth Parekh, Danielle Temples, Kara Keun, Shuting Lin**
+**Paarth Parekh, Danielle Temples, Kara Keun Lee, Shuting Lin**
 
 ## Required Software
 **Conda is recommended way of installing tools** <br/>
